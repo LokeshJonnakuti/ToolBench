@@ -114,7 +114,7 @@ class ToolEvalEvaluator(BaseEvaluator):
     def __init__(self,
                  cfg_path: str = None,
                 ):
-        eval_config = yaml.load(open(os.path.join(cfg_path,'config.yaml')),Loader=yaml.FullLoader)
+        eval_config = yaml.load(open(os.path.join(cfg_path,'config.yaml')),Loader=yaml.SafeLoader)
         template = open(os.path.join(cfg_path,eval_config['prompt_template'])).read()
         
         super().__init__(
