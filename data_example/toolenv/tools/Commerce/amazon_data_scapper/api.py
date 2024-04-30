@@ -20,7 +20,7 @@ def get_product_offers(productid: str, api_key: str, toolbench_rapidapi_key: str
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
