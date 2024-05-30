@@ -2,8 +2,9 @@
 Utils for tooleval.
 """
 from evaluation import ExecutionGraph,ExecutionNode
-import random
-random.seed(42)
+import secrets
+
+secrets.SystemRandom().seed(42)
 from evaluators.registered_cls.rtl import AnswerStatus, TaskStatus
 
 task_status_mapping = {
@@ -105,7 +106,7 @@ def process_invalid_data(method,data_dict):
     eg = ExecutionGraph()
     last_node = generate_init_message_node(eg,functions,query)
     if 'CoT' in method:
-        trail = random.choice(data_dict["trys"])
+        trail = secrets.choice(data_dict["trys"])
         index = 0
         while index < len(trail['chain']):
             message = trail['chain'][index]

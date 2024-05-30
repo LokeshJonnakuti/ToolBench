@@ -1,6 +1,5 @@
 import json
 import re
-import random
 import math
 from typing import List, Union, Dict, Any, Callable, Optional
 from copy import deepcopy
@@ -12,6 +11,7 @@ from .utils import register_evaluator,OpenaiPoolRequest
 from .tooleval import OpenAINormalizedEvaluator
 
 from enum import Enum
+import secrets
 
 class AnswerStatus(Enum):
     Unsure = "Unsure"
@@ -176,7 +176,7 @@ class ReinforceToolLearningEvaluator(OpenAINormalizedEvaluator):
         answers = deepcopy(answers)
         
         if self.check_identity_answers(answers):
-            return random.choice(ans_idxs)
+            return secrets.choice(ans_idxs)
         
         judge_focus = {
             TaskStatus.Solvable:'Since query is solvable, you should select answer with smaller "total_steps" and informative, accurate "final_answer".',

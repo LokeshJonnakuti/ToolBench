@@ -1,7 +1,6 @@
 from copy import deepcopy
 import json
 import re
-import random
 import math
 
 
@@ -10,6 +9,7 @@ from typing import List, Union, Dict, Any, Callable
 from .utils import register_evaluator,OpenaiPoolRequest
 
 from tenacity import retry, stop_after_attempt
+import secrets
 
 
 @register_evaluator
@@ -44,7 +44,7 @@ class OpenAIEvaluator(ToolEvalEvaluator):
         for choice in res.choices:
             prefers.append(int(json.loads(choice.message.function_call.arguments)['preference']))
             
-        return random.choice(prefers)
+        return secrets.choice(prefers)
     
 @register_evaluator
 class OpenAINormalizedEvaluator(ToolEvalEvaluator):
@@ -113,7 +113,7 @@ class OpenAINormalizedEvaluator(ToolEvalEvaluator):
             if item != hashed_ans[0]:
                 all_same = False
         if all_same:
-            return random.choice(range(len(final_answers)))
+            return secrets.choice(range(len(final_answers)))
         while True:
             selected = int(self.function_call('select_best_final_answer',{'query':query,'final_answers':final_answers})['best_answer_index'])
             if selected<len(final_answers) and selected>=0:
@@ -144,7 +144,7 @@ class OpenAINormalizedEvaluator(ToolEvalEvaluator):
         # return index of highest score
         highest_score = max(scores)
         highest_idx = [idx for idx,score in enumerate(scores) if score==highest_score]         
-        return random.choice(highest_idx)
+        return secrets.choice(highest_idx)
     
     def normalized_openai_completions(self,task_description:Dict,answers:List[Dict[Any,Any]])->int:
         
@@ -189,8 +189,8 @@ class OpenAINormalizedEvaluator(ToolEvalEvaluator):
             elif all_failed:
                 return self.compare_answer_details(answers)
             else:
-                return random.choice([index for index,solve in enumerate(is_solved) if solve])
+                return secrets.choice([index for index,solve in enumerate(is_solved) if solve])
         elif all_empty:
             return self.compare_answer_details(answers)
         else:
-            return random.choice([index for index,nonempty in enumerate(is_nonempty) if nonempty])
+            return secrets.choice([index for index,nonempty in enumerate(is_nonempty) if nonempty])
