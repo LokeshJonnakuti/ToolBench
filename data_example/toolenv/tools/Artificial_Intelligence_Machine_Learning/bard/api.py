@@ -1,9 +1,4 @@
-import requests
-import json
-from datetime import date, datetime, timedelta
-import os
-
-from typing import Optional, Dict, Union, List
+from security import safe_requests
 
 
 def ask(question: str, bard_secure_1psid_cookie_value: str, toolbench_rapidapi_key: str='088440d910mshef857391f2fc461p17ae9ejsnaebc918926ff'):
@@ -21,7 +16,7 @@ def ask(question: str, bard_secure_1psid_cookie_value: str, toolbench_rapidapi_k
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = safe_requests.get(url, headers=headers, params=querystring)
     try:
         observation = response.json()
     except:

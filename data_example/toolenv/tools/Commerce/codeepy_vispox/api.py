@@ -1,9 +1,4 @@
-import requests
-import json
-from datetime import date, datetime, timedelta
-import os
-
-from typing import Optional, Dict, Union, List
+from security import safe_requests
 
 
 def get_company_sponsor_list(start: int, format: str, size: int, s: str=None, t: str=None, co: str=None, ci: str=None, n: str=None, st: str=None, toolbench_rapidapi_key: str='088440d910mshef857391f2fc461p17ae9ejsnaebc918926ff'):
@@ -41,7 +36,7 @@ def get_company_sponsor_list(start: int, format: str, size: int, s: str=None, t:
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = safe_requests.get(url, headers=headers, params=querystring)
     try:
         observation = response.json()
     except:

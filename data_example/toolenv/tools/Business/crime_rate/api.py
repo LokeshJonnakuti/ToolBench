@@ -1,9 +1,4 @@
-import requests
-import json
-from datetime import date, datetime, timedelta
-import os
-
-from typing import Optional, Dict, Union, List
+from security import safe_requests
 
 
 def getproductbyslug(toolbench_rapidapi_key: str='088440d910mshef857391f2fc461p17ae9ejsnaebc918926ff'):
@@ -20,7 +15,7 @@ def getproductbyslug(toolbench_rapidapi_key: str='088440d910mshef857391f2fc461p1
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = safe_requests.get(url, headers=headers, params=querystring)
     try:
         observation = response.json()
     except:
@@ -45,7 +40,7 @@ def getproducts(sort_field: str, sort_direction: str, search: str='Velit', per_p
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = safe_requests.get(url, headers=headers, params=querystring)
     try:
         observation = response.json()
     except:
