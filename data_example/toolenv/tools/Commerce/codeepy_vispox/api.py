@@ -41,7 +41,7 @@ def get_company_sponsor_list(start: int, format: str, size: int, s: str=None, t:
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:

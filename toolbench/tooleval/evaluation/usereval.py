@@ -13,7 +13,7 @@ class UserEvaluation:
         self.eval_server_addr = eval_server_addr
         self.evalset = evalset
         self.method = method
-        res = requests.post(self.eval_server_addr+'/neweval',json=self.evalset)
+        res = requests.post(self.eval_server_addr+'/neweval',json=self.evalset, timeout=60)
         if res.status_code != 200:
             raise Exception('Failed to obtain new evaluation id! Error: '+res.text)
         ret = res.json()
@@ -21,7 +21,7 @@ class UserEvaluation:
         self.len = ret['len']
 
     def get_new_question(self)->Tuple[str,List]:
-        res = requests.post(self.eval_server_addr+'/next_question',json=self.eval_id)
+        res = requests.post(self.eval_server_addr+'/next_question',json=self.eval_id, timeout=60)
         if res.status_code == 204:
             raise EvalCompleted()
         if res.status_code != 200:
@@ -46,7 +46,7 @@ class UserEvaluation:
             'evaluation_id':self.eval_id,
             'tool_id':tid,
             'tool_args':tool_args
-        })
+        }, timeout=60)
         
         return res
     def _forward(self,query:str,tools:List[Dict])->Dict:

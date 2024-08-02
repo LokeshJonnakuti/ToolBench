@@ -20,7 +20,7 @@ def lorem(toolbench_rapidapi_key: str='088440d910mshef857391f2fc461p17ae9ejsnaeb
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:

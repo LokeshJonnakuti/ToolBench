@@ -20,7 +20,7 @@ def description_of_machine_learning_model_parameters(model_id: str, toolbench_ra
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
