@@ -4,9 +4,10 @@ Data preprocessing
 import argparse
 import json
 import os
-import random
 from toolbench.utils import process_system_message
-random.seed(0)
+import secrets
+
+secrets.SystemRandom().seed(0)
 parser = argparse.ArgumentParser()
 parser.add_argument('--tool_data_dir', type=str, default="", required=True, help='Original tool data path.')
 parser.add_argument('--output_file', type=str, default="", required=True, help='Preprocessed tool data output path.')

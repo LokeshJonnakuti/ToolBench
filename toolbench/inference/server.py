@@ -3,7 +3,7 @@ import json
 import os
 from typing import Union
 from toolbench.utils import standardize, change_name
-import random
+import secrets
 
 
 class Info(BaseModel):
@@ -108,8 +108,8 @@ def dict_shorten(origin: dict, schema: dict):
     return origin
 
 def observation_shorten(schema_root, response_dict, category, tool_name, api_name, strip_method):
-    print(random.random())
-    if strip_method == "filter" or (strip_method == "random" and random.random() > 0.5):
+    print(secrets.SystemRandom().random())
+    if strip_method == "filter" or (strip_method == "random" and secrets.SystemRandom().random() > 0.5):
         if isinstance(response_dict["response"], dict):
             if os.path.exists(os.path.join(schema_root, category)):
                 if os.path.exists(os.path.join(schema_root, category, tool_name+".json")):

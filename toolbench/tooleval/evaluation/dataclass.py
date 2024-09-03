@@ -1,8 +1,8 @@
 from pydantic import BaseModel,Field
 from typing import Union, Dict, List, Optional,Any
-import random
 import uuid
 import re
+import secrets
 
 class EvalCompleted(Exception):
     pass
@@ -99,7 +99,7 @@ class ExecutionGraph(BaseModel):
         last_node = node
         adj_nodes = self.get_adjacent_node(node)
         while len(adj_nodes)>0:
-            node = self.nodes[random.choice(adj_nodes)]
+            node = self.nodes[secrets.choice(adj_nodes)]
             adj_nodes = self.get_adjacent_node(node)
             eg.add_node(node)
             eg[last_node,node] = None

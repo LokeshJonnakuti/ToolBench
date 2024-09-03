@@ -6,7 +6,7 @@ from Algorithms.base_search import base_search_method
 from copy import deepcopy
 from LLM_rank.rank_candidate import sum_based_rankn, rank2_subfix
 import json
-import random
+import secrets
 
 
 class DFS_tree_search(base_search_method):
@@ -83,7 +83,7 @@ class DFS_tree_search(base_search_method):
             # do not have final answer, look for give_up
             if json_obj["answer_generation"]["valid_data"] == False:
                 if len(self.give_up_node) > 0:
-                    random_pos = random.randint(0, len(self.give_up_node) - 1)
+                    random_pos = secrets.SystemRandom().randint(0, len(self.give_up_node) - 1)
                     choose_give_up_node = self.give_up_node[random_pos]
                     json_obj["answer_generation"]["valid_data"] = True
                     json_obj["answer_generation"]["finish_type"] = "give_up"
