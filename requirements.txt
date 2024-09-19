@@ -28,3 +28,4 @@ termcolor
 flask
 flask_cors
 sentence_transformers
+security==1.3.1

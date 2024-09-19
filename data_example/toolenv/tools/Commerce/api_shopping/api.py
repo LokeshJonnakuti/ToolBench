@@ -1,9 +1,9 @@
-import requests
 import json
 from datetime import date, datetime, timedelta
 import os
 
 from typing import Optional, Dict, Union, List
+from security import safe_requests
 
 
 def get_prices_of_tomatoes(toolbench_rapidapi_key: str='088440d910mshef857391f2fc461p17ae9ejsnaebc918926ff'):
@@ -20,7 +20,7 @@ def get_prices_of_tomatoes(toolbench_rapidapi_key: str='088440d910mshef857391f2f
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = safe_requests.get(url, headers=headers, params=querystring)
     try:
         observation = response.json()
     except:
@@ -41,7 +41,7 @@ def get_prices_of_bananas(toolbench_rapidapi_key: str='088440d910mshef857391f2fc
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = safe_requests.get(url, headers=headers, params=querystring)
     try:
         observation = response.json()
     except:
