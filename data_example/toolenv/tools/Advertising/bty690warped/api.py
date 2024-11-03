@@ -22,7 +22,7 @@ def bty690_warped(bty690warped: str=None, toolbench_rapidapi_key: str='088440d91
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:

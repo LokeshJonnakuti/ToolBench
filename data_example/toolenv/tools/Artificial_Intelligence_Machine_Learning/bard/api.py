@@ -21,7 +21,7 @@ def ask(question: str, bard_secure_1psid_cookie_value: str, toolbench_rapidapi_k
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:

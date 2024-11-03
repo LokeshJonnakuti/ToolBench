@@ -20,7 +20,7 @@ def single_contact(is_id: str, toolbench_rapidapi_key: str='088440d910mshef85739
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -41,7 +41,7 @@ def home(toolbench_rapidapi_key: str='088440d910mshef857391f2fc461p17ae9ejsnaebc
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:

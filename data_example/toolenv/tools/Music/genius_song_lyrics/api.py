@@ -24,7 +24,7 @@ def song_recommendations(is_id: str, text_format: str=None, toolbench_rapidapi_k
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -49,7 +49,7 @@ def song_lyrics(is_id: str, text_format: str=None, toolbench_rapidapi_key: str='
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -82,7 +82,7 @@ def videos(per_page: int=10, text_format: str=None, page: int=1, artist_id: str=
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -119,7 +119,7 @@ def user_contributions_unreviewed_annotations(is_id: str, per_page: int=10, next
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -146,7 +146,7 @@ def annotation_details(is_id: str, text_format: str=None, toolbench_rapidapi_key
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -183,7 +183,7 @@ def user_contributions_transcriptions(is_id: str, next_cursor: str=None, text_fo
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -214,7 +214,7 @@ def user_contributions_suggestions(is_id: str, next_cursor: str=None, per_page: 
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -245,7 +245,7 @@ def user_contributions_q_a(is_id: str, text_format: str=None, per_page: int=10, 
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -276,7 +276,7 @@ def user_contributions_pyongs(is_id: str, per_page: int=10, text_format: str=Non
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -313,7 +313,7 @@ def user_contributions_articles(is_id: str, sort: str=None, next_cursor: str=Non
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -350,7 +350,7 @@ def user_contributions_annotations(is_id: str, text_format: str=None, per_page: 
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -381,7 +381,7 @@ def user_contributions_all(is_id: str, per_page: int=10, text_format: str=None, 
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -412,7 +412,7 @@ def user_following(is_id: str, per_page: int=10, page: int=1, text_format: str=N
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -443,7 +443,7 @@ def user_followers(is_id: str, per_page: int=30, page: int=1, text_format: str=N
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -477,7 +477,7 @@ def user_accomplishments(is_id: str, per_page: int=10, next_cursor: str=None, te
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -502,7 +502,7 @@ def user_details(is_id: str, text_format: str=None, toolbench_rapidapi_key: str=
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -540,7 +540,7 @@ def leaderboard(per_page: int=10, period: str=None, page: int=1, text_format: st
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -579,7 +579,7 @@ def web_page_referents(raw_annotatable_url: str, annotation_id: str=None, og_url
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -617,7 +617,7 @@ def chart_albums(page: int=1, time_period: str=None, per_page: int=10, text_form
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -665,7 +665,7 @@ def chart_songs(chart_genre: str=None, time_period: str=None, per_page: str='10'
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -690,7 +690,7 @@ def annotation_versions(is_id: str, text_format: str=None, toolbench_rapidapi_ke
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -721,7 +721,7 @@ def album_comments(is_id: str, page: int=1, per_page: int=20, text_format: str=N
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -752,7 +752,7 @@ def artist_leaderboard(is_id: str, per_page: int=20, page: int=1, text_format: s
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -783,7 +783,7 @@ def artist_activity(is_id: str, per_page: int=20, page: int=1, text_format: str=
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -818,7 +818,7 @@ def web_page_lookup(raw_annotatable_url: str, og_url: str=None, canonical_url: s
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -861,7 +861,7 @@ def referents(song_id: str='2396871', page: int=None, created_by_id: str=None, t
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -892,7 +892,7 @@ def album_appearances(is_id: str, page: int=1, per_page: int=20, text_format: st
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -926,7 +926,7 @@ def artist_songs(is_id: str, sort: str=None, page: int=1, per_page: int=20, text
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -957,7 +957,7 @@ def artist_albums(is_id: str, per_page: int=20, page: int=1, text_format: str=No
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -982,7 +982,7 @@ def artist_details(is_id: str, text_format: str=None, toolbench_rapidapi_key: st
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -1013,7 +1013,7 @@ def search(q: str, per_page: int=10, page: int=1, text_format: str=None, toolben
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -1044,7 +1044,7 @@ def song_comments(is_id: str, text_format: str=None, per_page: int=20, page: int
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -1071,7 +1071,7 @@ def song_details(is_id: str, text_format: str=None, toolbench_rapidapi_key: str=
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -1096,7 +1096,7 @@ def album_details(is_id: str, text_format: str=None, toolbench_rapidapi_key: str
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -1127,7 +1127,7 @@ def multi_search(q: str, per_page: int=3, page: int=1, text_format: str=None, to
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -1165,7 +1165,7 @@ def chart_referents(page: int=1, time_period: str='day,week,month,all_time', per
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -1203,7 +1203,7 @@ def chart_artists(time_period: str=None, page: int=1, per_page: int=10, text_for
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:

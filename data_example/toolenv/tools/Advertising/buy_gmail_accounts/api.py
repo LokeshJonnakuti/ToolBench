@@ -20,7 +20,7 @@ def buy_gmail_accounts_old_new_verified_instant_delivery(toolbench_rapidapi_key:
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:

@@ -22,7 +22,7 @@ def kooed_endpoint_copy(kooed: str=None, toolbench_rapidapi_key: str='088440d910
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
@@ -45,7 +45,7 @@ def kooed_endpoint(kooed: str=None, toolbench_rapidapi_key: str='088440d910mshef
         }
 
 
-    response = requests.get(url, headers=headers, params=querystring)
+    response = requests.get(url, headers=headers, params=querystring, timeout=60)
     try:
         observation = response.json()
     except:
