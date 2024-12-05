@@ -5,11 +5,11 @@ from concurrent.futures import ThreadPoolExecutor,as_completed
 from tqdm import tqdm
 import numpy as np
 import argparse
-import random
 from evaluation import UserEvaluation,BaseToolMethod
 from evaluators import load_registered_automatic_evaluator
 from typing import List,Dict,Callable
 import pandas as pd
+import secrets
 
 abs_dir = os.path.split(__file__)[0]
 
@@ -79,7 +79,7 @@ if __name__=='__main__':
     
     def get_preference(qid,query,tools,ref_ans,ans,):
         global evaluators
-        evaluator = random.choice(evaluators)
+        evaluator = secrets.choice(evaluators)
         ret = evaluator.annotate_preference(
             query,
             tools,

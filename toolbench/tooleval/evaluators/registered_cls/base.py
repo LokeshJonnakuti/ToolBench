@@ -1,8 +1,8 @@
-import random
 from typing import List, Union, Dict, Any, Callable
 import os
 import yaml
 from .utils import register_evaluator
+import secrets
 
 def process_answer(answer: Dict):
     answer['final_answer'] = answer['final_answer'][:1000]
@@ -77,7 +77,7 @@ class BaseEvaluator:
         
         def shuffle_run() -> int:
             indexs = list(range(len(answers_processed)))
-            random.shuffle(indexs)
+            secrets.SystemRandom().shuffle(indexs)
             
             answers_projected = [answers[idx] for idx in indexs]
             

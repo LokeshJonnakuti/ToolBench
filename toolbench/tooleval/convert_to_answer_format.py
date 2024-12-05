@@ -5,8 +5,9 @@ import argparse
 import json
 import os
 from evaluation import ExecutionGraph,ExecutionNode
-import random
-random.seed(42)
+import secrets
+
+secrets.SystemRandom().seed(42)
 parser = argparse.ArgumentParser()
 parser.add_argument('--answer_dir',type=str, required=True,help='where the answers stored.')
 parser.add_argument('--method',type=str,required=True,help='the name of the method.')
@@ -78,7 +79,7 @@ def process_invalid_data(method,data_dict):
     eg = ExecutionGraph()
     last_node = generate_init_message_node(eg,functions,query)
     if 'CoT' in method or 'cot' in method:
-        trail = random.choice(data_dict["trys"])
+        trail = secrets.choice(data_dict["trys"])
 
         
         index = 0

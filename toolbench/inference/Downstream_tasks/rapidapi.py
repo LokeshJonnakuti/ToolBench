@@ -5,7 +5,6 @@ import time
 import requests
 from tqdm import tqdm
 from termcolor import colored
-import random
 from toolbench.inference.LLM.chatgpt_function_model import ChatGPTFunction
 from toolbench.inference.LLM.davinci_model import Davinci
 from toolbench.inference.LLM.tool_llama_lora_model import ToolLLaMALoRA
@@ -21,6 +20,7 @@ from toolbench.utils import (
 )
 
 from toolbench.inference.Downstream_tasks.base_env import base_env
+import secrets
 
 
 # For pipeline environment preparation
@@ -530,8 +530,8 @@ class pipeline_runner:
         
     def run(self):
         task_list = self.task_list
-        random.seed(42)
-        random.shuffle(task_list)
+        secrets.SystemRandom().seed(42)
+        secrets.SystemRandom().shuffle(task_list)
         print(f"total tasks: {len(task_list)}")
         new_task_list = []
         for task in task_list:

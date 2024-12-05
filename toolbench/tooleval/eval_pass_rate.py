@@ -3,11 +3,11 @@ import os
 import json
 import csv
 from evaluators.registered_cls.rtl import AnswerStatus, TaskStatus, AnswerPass
-import random
 from concurrent.futures import ThreadPoolExecutor,as_completed
 import argparse
 from tqdm import tqdm
 from utils import test_sets, get_steps
+import secrets
 
 abs_dir = os.path.split(__file__)[0]
 
@@ -32,7 +32,7 @@ def write_results(filename: str, reference_model: str, label_cnt: dict) -> None:
             elif label_cnt[query_id]["passed"] < label_cnt[query_id]["failed"]:
                 final_label = "failed"
             else:
-                if random.random() < 0.5: # if tie, random choose
+                if secrets.SystemRandom().random() < 0.5: # if tie, random choose
                     final_label = "passed"
                 else:
                     final_label = "failed"
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     
     def compute_pass_rate(query_id, example):
         global evaluators
-        evaluator = random.choice(evaluators)
+        evaluator = secrets.choice(evaluators)
         try:
             not_hallucinate = evaluator.check_has_hallucination(
             example['available_tools'],
@@ -106,7 +106,7 @@ if __name__ == "__main__":
         elif is_passed == AnswerPass.Failed:
             label = "failed"
         else:
-            if random.random() < 0.5: # if unsure, random choose
+            if secrets.SystemRandom().random() < 0.5: # if unsure, random choose
                 label = "passed"
             else:
                 label = "failed"
@@ -173,7 +173,7 @@ if __name__ == "__main__":
             if label_cnt[query_id]["failed"] < label_cnt[query_id]["passed"]:
                 pass_rate += 1
             elif label_cnt[query_id]["failed"] == label_cnt[query_id]["passed"]:
-                if random.random() < 0.5:
+                if secrets.SystemRandom().random() < 0.5:
                     pass_rate += 1
         pass_rate /= len(label_cnt)
         print(f"Test set: {test_set}. Model: {reference_model}. Pass rate: {str(pass_rate)}")
