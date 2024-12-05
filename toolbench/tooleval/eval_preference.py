@@ -23,13 +23,13 @@ import os
 import argparse
 import json
 import pandas as pd
-import random
 import numpy as np
 from evaluators import load_registered_automatic_evaluator
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from tqdm import tqdm
 from utils import test_sets, get_steps, task_status_mapping, answer_status_mapping
 import csv
+import secrets
 
 abs_dir = os.path.split(__file__)[0]
 
@@ -134,7 +134,7 @@ if __name__=='__main__':
     
     def get_preference(query_id, task_status, answer_statuss, ref_example, output_example):
         global evaluators
-        evaluator = random.choice(evaluators)
+        evaluator = secrets.choice(evaluators)
         
         preference = evaluator.annotate_preference(
             ref_example['query'],

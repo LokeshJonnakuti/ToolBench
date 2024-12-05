@@ -23,11 +23,12 @@ import os
 import argparse
 import json
 import pandas as pd
-import random
 import numpy as np
 from evaluators import load_registered_automatic_evaluator
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from tqdm import tqdm
+import secrets
+
 abs_dir = os.path.split(__file__)[0]
 
 def parse_args():
@@ -109,7 +110,7 @@ if __name__=='__main__':
     
     def get_preference(qid,query,tools,ref_ans,ans,):
         global evaluators
-        evaluator = random.choice(evaluators)
+        evaluator = secrets.choice(evaluators)
         ret = evaluator.annotate_preference(
             query,
             tools,

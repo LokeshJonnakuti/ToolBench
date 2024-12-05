@@ -8,8 +8,9 @@ import numpy as np
 import copy
 from typing import List
 from scipy.stats import pearsonr,spearmanr
-import random
-random.seed(42)
+import secrets
+
+secrets.SystemRandom().seed(42)
 
 abs_dir = os.path.split(__file__)[0]
 annotated_data = json.load(open(os.path.join(abs_dir,'dataset/human_cross_annotated_data.json')))
@@ -40,7 +41,7 @@ def get_correlation(x,y):
     x = x+1
     y = y+1
     if np.var(x)==0 or np.var(y)==0:
-        return float(random.choice(get_most_preferred(x))==random.choice(get_most_preferred(y)))
+        return float(secrets.choice(get_most_preferred(x))==secrets.choice(get_most_preferred(y)))
     return pearsonr(x,y)[0]
 
 def test_on_annotated_data(evaluator_cfg)->List[List[int]]:

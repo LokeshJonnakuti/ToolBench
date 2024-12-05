@@ -3,8 +3,8 @@ Evaluate the score of a query corresponding to different candidates
 '''
 
 from Prompts.rank_prompts import LLM_PAIRWISE_RANK_SUBFIX_SYSTEM_PROMPT, LLM_PAIRWISE_RANK_USER_PROMPT
-import random
 from Tree.Tree import tree_node
+import secrets
 
 
 def rank2symmetry(llm_interface, LLM_rank_args, cand1,cand2):
@@ -74,7 +74,7 @@ def sum_based_rankn(llm_interface,LLM_rank_args, candidates):
 
 
 if __name__ ==  "__main__":
-    random.seed(42)
+    secrets.SystemRandom().seed(42)
     # candidates = [
     #     "234",
     #     "66.5",

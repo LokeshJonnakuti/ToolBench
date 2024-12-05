@@ -5,7 +5,7 @@ import requests
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
 import openai
-import random
+import secrets
 
 __registered_evaluators__ = {}
 
@@ -32,10 +32,10 @@ class OpenaiPoolRequest:
         __pool_file = pool_json_file
         if os.environ.get('API_POOL_FILE',None) is not None:
             __pool_file = os.environ.get('API_POOL_FILE')
-            self.now_pos = random.randint(-1, len(self.pool))
+            self.now_pos = secrets.SystemRandom().randint(-1, len(self.pool))
         if os.path.exists(__pool_file):
             self.pool = json.load(open(__pool_file))
-            self.now_pos = random.randint(-1, len(self.pool))
+            self.now_pos = secrets.SystemRandom().randint(-1, len(self.pool))
         print(__pool_file)
         if os.environ.get('OPENAI_KEY',None) is not None:
             self.pool.append({
